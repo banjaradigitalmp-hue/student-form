@@ -4,8 +4,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Student Success Meet 2026-27</title>
 
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
 <style>
-body { font-family: Arial; background:#f4f7fb; margin:0; }
+body { font-family: Arial; background:#f4f7fb; }
 
 .container {
     max-width:600px;
@@ -16,28 +18,21 @@ body { font-family: Arial; background:#f4f7fb; margin:0; }
     border-radius:10px;
 }
 
-label { font-weight:bold; display:block; margin-top:10px; }
-
 input, select, textarea {
     width:100%;
     padding:10px;
-    margin-top:5px;
+    margin-top:10px;
 }
 
 button {
     width:100%;
     padding:12px;
-    margin-top:10px;
+    margin-top:15px;
+    background:#0a58ca;
+    color:white;
     border:none;
     border-radius:5px;
-    font-size:16px;
 }
-
-.payBtn { background:green; color:white; }
-.submitBtn { background:#0a58ca; color:white; display:none; }
-
-.success { color:green; text-align:center; font-weight:bold; }
-
 </style>
 </head>
 
@@ -49,68 +44,40 @@ button {
 
 <form id="myForm">
 
-<label>Student Name</label>
-<input type="text" required>
+<input type="text" id="name" placeholder="Student Name" required>
+<input type="date" id="dob">
+<input type="number" id="mobile" placeholder="Mobile">
+<input type="text" id="school" placeholder="School">
 
-<label>Date of Birth</label>
-<input type="date">
-
-<label>Mobile</label>
-<input type="number">
-
-<label>School</label>
-<input type="text">
-
-<label>Stream</label>
-<select>
+<select id="stream">
 <option>Science</option>
 <option>Commerce</option>
 <option>Arts</option>
 </select>
 
-<label>Future College</label>
-<input type="text">
+<input type="text" id="college" placeholder="College">
+<textarea id="career" placeholder="Career Goal"></textarea>
 
-<label>Career Goal</label>
-<textarea></textarea>
-
-<label>Travel Mode</label>
-<select>
+<select id="travel">
 <option>Self</option>
 <option>College Bus</option>
 <option>Public Transport</option>
 </select>
 
-<label>Scholarship</label>
-<select>
+<select id="scholarship">
 <option>Yes</option>
 <option>No</option>
 </select>
 
-<label>Health Card</label>
-<select>
+<select id="health">
 <option>Yes</option>
 <option>No</option>
 </select>
 
-<label>Family Contact 1</label>
-<input type="number">
+<input type="number" id="contact1" placeholder="Contact 1">
+<input type="number" id="contact2" placeholder="Contact 2">
 
-<label>Family Contact 2</label>
-<input type="number">
-
-<!-- PAYMENT -->
-<button type="button" class="payBtn" onclick="payNow()">💳 Pay Now</button>
-
-<p id="msg" class="success"></p>
-
-<label>Enter Payment Transaction ID</label>
-<input type="text" id="txn" placeholder="Payment ID">
-
-<button type="button" onclick="verifyPayment()">Verify Payment</button>
-
-<!-- SUBMIT -->
-<button type="submit" class="submitBtn" id="submitBtn">Submit Form</button>
+<button type="button" onclick="payNow()">💳 Pay & Submit</button>
 
 </form>
 
@@ -118,59 +85,56 @@ button {
 
 <script>
 
+// 🔐 Razorpay Key ID (अपनी डालो)
+const key = "rzp_test_SZ6vjdtQgSpPh8";
+
+// 📊 Google Sheet URL (आपका)
 const scriptURL = "https://script.google.com/macros/s/AKfycbx3G504bcowfB-xlFziq1IP9bNixPl-SFGy1QLVG4EfI1P3qaOZCbgBIUkSLoZEna9Q6g/exec";
 
-// 👉 अपना Razorpay Payment Link
-const paymentLink = "https://rzp.io/rzp/86stMqr";
+function payNow(){
 
-function payNow() {
-    window.open(paymentLink, "_blank");
+    var options = {
+        "key": key,
+        "amount": 2100,
+        "currency": "INR",
+        "name": "Student Success Meet",
+
+        handler: function (response){
+            submitForm(response.razorpay_payment_id);
+        }
+    };
+
+    var rzp = new Razorpay(options);
+    rzp.open();
 }
 
-// Basic verification
-function verifyPayment() {
-    let txn = document.getElementById("txn").value;
-
-    if(txn.length > 5){
-        document.getElementById("msg").innerText = "Payment Verified ✅";
-        document.getElementById("submitBtn").style.display = "block";
-    } else {
-        alert("Invalid Payment ID ❌");
-    }
-}
-
-// Submit
-document.getElementById("myForm").addEventListener("submit", function(e){
-    e.preventDefault();
+function submitForm(paymentId){
 
     const data = {
-        name: document.querySelectorAll('input')[0].value,
-        dob: document.querySelectorAll('input')[1].value,
-        mobile: document.querySelectorAll('input')[2].value,
-        school: document.querySelectorAll('input')[3].value,
-        stream: document.querySelectorAll('select')[0].value,
-        college: document.querySelectorAll('input')[4].value,
-        career: document.querySelector('textarea').value,
-        travel: document.querySelectorAll('select')[1].value,
-        scholarship: document.querySelectorAll('select')[2].value,
-        health: document.querySelectorAll('select')[3].value,
-        contact1: document.querySelectorAll('input')[5].value,
-        contact2: document.querySelectorAll('input')[6].value,
-        paymentId: document.getElementById("txn").value
+        name: document.getElementById("name").value,
+        dob: document.getElementById("dob").value,
+        mobile: document.getElementById("mobile").value,
+        school: document.getElementById("school").value,
+        stream: document.getElementById("stream").value,
+        college: document.getElementById("college").value,
+        career: document.getElementById("career").value,
+        travel: document.getElementById("travel").value,
+        scholarship: document.getElementById("scholarship").value,
+        health: document.getElementById("health").value,
+        contact1: document.getElementById("contact1").value,
+        contact2: document.getElementById("contact2").value,
+        paymentId: paymentId
     };
 
     fetch(scriptURL, {
         method: "POST",
         body: JSON.stringify(data)
-    })
-    .then(() => {
-        alert("Form Submitted Successfully ✅");
+    }).then(()=>{
+        alert("Payment + Registration Done ✅");
         document.getElementById("myForm").reset();
-        document.getElementById("submitBtn").style.display = "none";
-        document.getElementById("msg").innerText = "";
     });
 
-});
+}
 
 </script>
 
