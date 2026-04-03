@@ -2,31 +2,136 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Student Success Meet</title>
+<title>Student Success Meet 2026-27</title>
 
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
+<style>
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #eef2f7;
+    margin: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 30px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #0a58ca;
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: 600;
+    margin-top: 10px;
+    display: block;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 20px;
+    background: linear-gradient(45deg, #0a58ca, #0066ff);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+</style>
 </head>
 
 <body>
+
+<div class="container">
 
 <h2>🎓 Student Success Meet 2026-27</h2>
 
 <form id="myForm">
 
-<input type="text" id="name" placeholder="Student Name" required><br><br>
-<input type="number" id="mobile" placeholder="Mobile"><br><br>
+<label>Student Name</label>
+<input type="text" id="name" required>
 
-<button type="button" onclick="payNow()">💳 Pay & Register</button>
+<label>Date of Birth</label>
+<input type="date" id="dob">
+
+<label>Mobile Number</label>
+<input type="number" id="mobile">
+
+<label>School Name</label>
+<input type="text" id="school">
+
+<label>Stream</label>
+<select id="stream">
+<option>Science</option>
+<option>Commerce</option>
+<option>Arts</option>
+</select>
+
+<label>Future College</label>
+<input type="text" id="college">
+
+<label>Career Goal</label>
+<textarea id="career"></textarea>
+
+<label>Travel Mode</label>
+<select id="travel">
+<option>Self</option>
+<option>College Bus</option>
+<option>Public Transport</option>
+</select>
+
+<label>Scholarship</label>
+<select id="scholarship">
+<option>Yes</option>
+<option>No</option>
+</select>
+
+<label>Health Card</label>
+<select id="health">
+<option>Yes</option>
+<option>No</option>
+</select>
+
+<label>Family Contact 1</label>
+<input type="number" id="contact1">
+
+<label>Family Contact 2</label>
+<input type="number" id="contact2">
+
+<button type="button" onclick="payNow()">💳 Pay ₹21 & Register</button>
 
 </form>
 
+</div>
+
 <script>
 
-// 👉 Test Key (use करो)
+// 🔐 Razorpay Key
 const key = "rzp_test_SZ6vjdtQgSpPh8";
 
-// 👉 Google Sheet URL
+// 📊 Google Sheet URL
 const scriptURL = "https://script.google.com/macros/s/AKfycbx3G504bcowfB-xlFziq1IP9bNixPl-SFGy1QLVG4EfI1P3qaOZCbgBIUkSLoZEna9Q6g/exec";
 
 function payNow(){
@@ -36,6 +141,7 @@ function payNow(){
         "amount": 2100,
         "currency": "INR",
         "name": "Student Success Meet",
+        "description": "Registration Fee",
 
         handler: function (response){
             submitForm(response.razorpay_payment_id);
@@ -50,7 +156,17 @@ function submitForm(paymentId){
 
     const data = {
         name: document.getElementById("name").value,
+        dob: document.getElementById("dob").value,
         mobile: document.getElementById("mobile").value,
+        school: document.getElementById("school").value,
+        stream: document.getElementById("stream").value,
+        college: document.getElementById("college").value,
+        career: document.getElementById("career").value,
+        travel: document.getElementById("travel").value,
+        scholarship: document.getElementById("scholarship").value,
+        health: document.getElementById("health").value,
+        contact1: document.getElementById("contact1").value,
+        contact2: document.getElementById("contact2").value,
         paymentId: paymentId
     };
 
@@ -58,7 +174,8 @@ function submitForm(paymentId){
         method: "POST",
         body: JSON.stringify(data)
     }).then(()=>{
-        alert("Registration Successful ✅");
+        alert("🎉 Registration Successful!");
+        document.getElementById("myForm").reset();
     });
 
 }
