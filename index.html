@@ -2,93 +2,31 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Student Success Meet 2026-27</title>
+<title>Student Success Meet</title>
 
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
-<style>
-body { font-family: Arial; background:#f4f7fb; }
-
-.container {
-    max-width:600px;
-    margin:auto;
-    background:white;
-    padding:20px;
-    margin-top:20px;
-    border-radius:10px;
-}
-
-input, select, textarea {
-    width:100%;
-    padding:10px;
-    margin-top:10px;
-}
-
-button {
-    width:100%;
-    padding:12px;
-    margin-top:15px;
-    background:#0a58ca;
-    color:white;
-    border:none;
-    border-radius:5px;
-}
-</style>
 </head>
 
 <body>
-
-<div class="container">
 
 <h2>🎓 Student Success Meet 2026-27</h2>
 
 <form id="myForm">
 
-<input type="text" id="name" placeholder="Student Name" required>
-<input type="date" id="dob">
-<input type="number" id="mobile" placeholder="Mobile">
-<input type="text" id="school" placeholder="School">
+<input type="text" id="name" placeholder="Student Name" required><br><br>
+<input type="number" id="mobile" placeholder="Mobile"><br><br>
 
-<select id="stream">
-<option>Science</option>
-<option>Commerce</option>
-<option>Arts</option>
-</select>
-
-<input type="text" id="college" placeholder="College">
-<textarea id="career" placeholder="Career Goal"></textarea>
-
-<select id="travel">
-<option>Self</option>
-<option>College Bus</option>
-<option>Public Transport</option>
-</select>
-
-<select id="scholarship">
-<option>Yes</option>
-<option>No</option>
-</select>
-
-<select id="health">
-<option>Yes</option>
-<option>No</option>
-</select>
-
-<input type="number" id="contact1" placeholder="Contact 1">
-<input type="number" id="contact2" placeholder="Contact 2">
-
-<button type="button" onclick="payNow()">💳 Pay & Submit</button>
+<button type="button" onclick="payNow()">💳 Pay & Register</button>
 
 </form>
 
-</div>
-
 <script>
 
-// 🔐 Razorpay Key ID (अपनी डालो)
+// 👉 Test Key (use करो)
 const key = "rzp_test_SZ6vjdtQgSpPh8";
 
-// 📊 Google Sheet URL (आपका)
+// 👉 Google Sheet URL
 const scriptURL = "https://script.google.com/macros/s/AKfycbx3G504bcowfB-xlFziq1IP9bNixPl-SFGy1QLVG4EfI1P3qaOZCbgBIUkSLoZEna9Q6g/exec";
 
 function payNow(){
@@ -112,17 +50,7 @@ function submitForm(paymentId){
 
     const data = {
         name: document.getElementById("name").value,
-        dob: document.getElementById("dob").value,
         mobile: document.getElementById("mobile").value,
-        school: document.getElementById("school").value,
-        stream: document.getElementById("stream").value,
-        college: document.getElementById("college").value,
-        career: document.getElementById("career").value,
-        travel: document.getElementById("travel").value,
-        scholarship: document.getElementById("scholarship").value,
-        health: document.getElementById("health").value,
-        contact1: document.getElementById("contact1").value,
-        contact2: document.getElementById("contact2").value,
         paymentId: paymentId
     };
 
@@ -130,8 +58,7 @@ function submitForm(paymentId){
         method: "POST",
         body: JSON.stringify(data)
     }).then(()=>{
-        alert("Payment + Registration Done ✅");
-        document.getElementById("myForm").reset();
+        alert("Registration Successful ✅");
     });
 
 }
