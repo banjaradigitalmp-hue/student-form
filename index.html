@@ -104,6 +104,11 @@ button {
 
 <p id="msg" class="success"></p>
 
+<label>Enter Payment Transaction ID</label>
+<input type="text" id="txn" placeholder="Payment ID">
+
+<button type="button" onclick="verifyPayment()">Verify Payment</button>
+
 <!-- SUBMIT -->
 <button type="submit" class="submitBtn" id="submitBtn">Submit Form</button>
 
@@ -116,7 +121,7 @@ button {
 const scriptURL = "https://script.google.com/macros/s/AKfycbx3G504bcowfB-xlFziq1IP9bNixPl-SFGy1QLVG4EfI1P3qaOZCbgBIUkSLoZEna9Q6g/exec";
 
 // 👉 अपना Razorpay Payment Link
-const paymentLink = "https://rzp.io/rzp/Nvztla3https://rzp.io/rzp/86stMqr
+const paymentLink = "https://rzp.io/rzp/86stMqr";
 
 function payNow() {
     window.open(paymentLink, "_blank");
