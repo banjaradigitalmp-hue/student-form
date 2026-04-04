@@ -23,19 +23,11 @@ body {
 
 .header img {
     width: 100%;
-    max-height: 200px;
+    max-height: 220px;
     object-fit: cover;
 }
 
-.header h1 {
-    margin: 10px 0 5px;
-}
-
-.header p {
-    padding: 0 15px;
-}
-
-/* FORM */
+/* CONTAINER */
 .container {
     max-width: 600px;
     margin: 20px auto;
@@ -62,13 +54,17 @@ input, select, textarea {
 button {
     width: 100%;
     padding: 14px;
-    margin-top: 20px;
+    margin-top: 15px;
     background: linear-gradient(45deg, #0a58ca, #0066ff);
     color: white;
     border: none;
     border-radius: 8px;
     font-size: 16px;
     font-weight: bold;
+}
+
+.mapBtn {
+    background: #28a745;
 }
 
 /* FOOTER */
@@ -78,10 +74,6 @@ button {
     text-align: center;
     padding: 20px;
     margin-top: 30px;
-}
-
-.footer h3 {
-    margin-bottom: 5px;
 }
 </style>
 </head>
@@ -93,12 +85,32 @@ button {
 
 <img src="https://github.com/banjaradigitalmp-hue/student-form/blob/main/WhatsApp%20Image%202026-04-04%20at%209.41.57%20AM.jpeg?raw=true">
 
-<h1>Student Success Meet 2026-27 Registration Form</h1>
+<h1>Student Success Meet 2026-27</h1>
 
 <p>
-मध्यप्रदेश एनजीओ महासंघ व कृष्णसखी सोशल वेलफेयर सोसायटी द्वारा आयोजित Student Success Meet 2026-27 में आपका स्वागत है।
-कृपया सभी जानकारी सही एवं पूर्ण रूप से भरें।
+Welcome to Student Success Meet 2026-27.  
+Please fill all details carefully.
 </p>
+
+<!-- Digital Partner -->
+<div>
+    <img src="https://github.com/banjaradigitalmp-hue/student-form/blob/main/WhatsApp%20Image%202026-03-06%20at%206.52.34%20PM.jpeg?raw=true">
+    <h3 style="color:#ffd700;">Digital Partner</h3>
+    <h2>Banjara Digital</h2>
+    <p>Connect • Create • Grow</p>
+</div>
+
+<!-- Event Details -->
+<div style="background:#ffffff20; margin:15px; padding:10px; border-radius:8px;">
+    <p><b>📅 Date:</b> 10 May 2026</p>
+    <p><b>⏰ Time:</b> 10:00 AM Onwards</p>
+    <p><b>📍 Venue:</b> Anand Mohan Mathur Sabhagrah, Vijay Nagar, Indore</p>
+</div>
+
+<!-- Map Button -->
+<a href="https://www.google.com/maps/search/?api=1&query=Anand+Mohan+Mathur+Sabhagrah+Indore" target="_blank">
+    <button class="mapBtn">📍 View Location on Map</button>
+</a>
 
 </div>
 
@@ -157,6 +169,10 @@ button {
 <label>Family Contact 2</label>
 <input type="number" id="contact2">
 
+<p style="color:green;font-weight:bold;">
+👉 Registration के बाद WhatsApp Group join करना जरूरी है
+</p>
+
 <button type="button" onclick="payNow()">💳 Pay ₹21 & Register</button>
 
 </form>
@@ -168,7 +184,7 @@ button {
 
 <h3>About</h3>
 <p>
-यह कार्यक्रम छात्रों के मार्गदर्शन, शिक्षा और भविष्य निर्माण के उद्देश्य से आयोजित किया गया है।
+This program is organized for student guidance and future development.
 </p>
 
 <h3>Contact</h3>
@@ -176,6 +192,11 @@ button {
 📞 9685444391 <br>
 📧 banjaradigitalmp@gmail.com
 </p>
+
+<hr>
+
+<p><b>Digital Partner:</b> Banjara Digital</p>
+<p>Connect • Create • Grow</p>
 
 </div>
 
@@ -186,6 +207,9 @@ const key = "rzp_test_SZ6vjdtQgSpPh8";
 
 // 📊 Google Sheet URL
 const scriptURL = "https://script.google.com/macros/s/AKfycbx3G504bcowfB-xlFziq1IP9bNixPl-SFGy1QLVG4EfI1P3qaOZCbgBIUkSLoZEna9Q6g/exec";
+
+// 📱 WhatsApp Group Link
+const whatsappLink = "https://chat.whatsapp.com/F6pAgLGdTcu5soecJMh3F0?mode=gi_t";
 
 function payNow(){
 
@@ -228,6 +252,10 @@ function submitForm(paymentId){
         body: JSON.stringify(data)
     }).then(()=>{
         alert("🎉 Registration Successful!");
+
+        // WhatsApp Join
+        window.open(whatsappLink, "_blank");
+
         document.getElementById("myForm").reset();
     });
 
