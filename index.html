@@ -1,81 +1,83 @@
 <!DOCTYPE html>
-<html>
+<html lang="hi">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Student Success Meet 2026-27</title>
-
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<title>Banjara Digital | Student Registration</title>
 
 <style>
-body {
-    font-family: 'Segoe UI', sans-serif;
-    background: #eef2f7;
-    margin: 0;
+body{
+    font-family:'Segoe UI',sans-serif;
+    margin:0;
+    background:#eef2f7;
 }
 
 /* HEADER */
-.header {
-    background: linear-gradient(45deg, #0a58ca, #0040a0);
-    color: white;
-    text-align: center;
-    padding-bottom: 20px;
+.header{
+    background:linear-gradient(45deg,#0a58ca,#0040a0);
+    color:white;
+    text-align:center;
+    padding-bottom:20px;
 }
 
-.header img {
-    width: 100%;
-    max-height: auto;
-    object-fit: contain;
+.header img{
+    width:100%;
 }
 
 /* CONTAINER */
-.container {
-    max-width: 600px;
-    margin: 20px auto;
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+.container{
+    max-width:600px;
+    margin:20px auto;
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 
-label {
-    font-weight: 600;
-    margin-top: 10px;
-    display: block;
+label{
+    font-weight:600;
+    display:block;
+    margin-top:10px;
 }
 
-input, select, textarea {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
+input,select,textarea{
+    width:100%;
+    padding:10px;
+    margin-top:5px;
+    border-radius:6px;
+    border:1px solid #ccc;
 }
 
-button {
-    width: 100%;
-    padding: 14px;
-    margin-top: 15px;
-    background: linear-gradient(45deg, #0a58ca, #0066ff);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: bold;
+button{
+    width:100%;
+    padding:14px;
+    margin-top:15px;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    font-weight:bold;
+    color:white;
 }
 
-.mapBtn {
-    background: #28a745;
-}
+/* BUTTON COLORS */
+.pay{background:#0066ff;}
+.whatsapp{background:#25D366;}
+.mapBtn{background:#28a745;}
 
 /* FOOTER */
-.footer {
-    background: #222;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    margin-top: 30px;
+.footer{
+    background:#222;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:30px;
+}
+
+.footer a{
+    color:#00c3ff;
+    text-decoration:none;
 }
 </style>
+
 </head>
 
 <body>
@@ -88,20 +90,20 @@ button {
 <h1>Student Success Meet 2026-27</h1>
 
 <p>
-Welcome to Student Success Meet 2026-27.  
-Please fill all details carefully.
+Welcome to Student Success Meet 2026-27  
+Please fill details carefully
 </p>
 
-<!-- Event Details -->
-<div style="background:#ffffff20; margin:15px; padding:10px; border-radius:8px;">
-    <p><b>📅 Date:</b> 10 May 2026</p>
-    <p><b>⏰ Time:</b> 10:00 AM Onwards</p>
-    <p><b>📍 Venue:</b> Anand Mohan Mathur Sabhagrah, Vijay Nagar, Indore</p>
+<!-- EVENT DETAILS -->
+<div style="background:#ffffff20;margin:15px;padding:10px;border-radius:8px;">
+<p><b>📅 Date:</b> 10 May 2026</p>
+<p><b>⏰ Time:</b> 10:00 AM</p>
+<p><b>📍 Venue:</b> Indore</p>
 </div>
 
-<!-- Map Button -->
-<a href="https://www.google.com/maps/search/?api=1&query=Anand+Mohan+Mathur+Sabhagrah+Indore" target="_blank">
-    <button class="mapBtn">📍 View Location on Map</button>
+<!-- MAP -->
+<a href="https://www.google.com/maps/search/?api=1&query=Indore" target="_blank">
+<button class="mapBtn">📍 View Location</button>
 </a>
 
 </div>
@@ -109,158 +111,91 @@ Please fill all details carefully.
 <!-- FORM -->
 <div class="container">
 
-<form id="myForm">
+<h2>Registration Form</h2>
 
-<label>Student Name</label>
-<input type="text" id="name" required>
+<label>Name</label>
+<input type="text">
 
-<label>Date of Birth</label>
-<input type="date" id="dob">
+<label>Mobile</label>
+<input type="number">
 
-<label>Mobile Number</label>
-<input type="number" id="mobile">
-
-<label>School Name</label>
-<input type="text" id="school">
+<label>School</label>
+<input type="text">
 
 <label>Stream</label>
-<select id="stream">
+<select>
 <option>Science</option>
 <option>Commerce</option>
 <option>Arts</option>
 </select>
 
-<label>Future College</label>
-<input type="text" id="college">
-
 <label>Career Goal</label>
-<textarea id="career"></textarea>
-
-<label>Travel Mode</label>
-<select id="travel">
-<option>Self</option>
-<option>College Bus</option>
-<option>Public Transport</option>
-</select>
-
-<label>Scholarship</label>
-<select id="scholarship">
-<option>Yes</option>
-<option>No</option>
-</select>
-
-<label>Health Card</label>
-<select id="health">
-<option>Yes</option>
-<option>No</option>
-</select>
-
-<label>Family Contact 1</label>
-<input type="number" id="contact1">
-
-<label>Family Contact 2</label>
-<input type="number" id="contact2">
+<textarea></textarea>
 
 <p style="color:green;font-weight:bold;">
-👉 Registration के बाद WhatsApp Group join करना जरूरी है
+👉 पहले ₹21 payment करें, फिर WhatsApp group join करें
 </p>
 
-<button type="button" onclick="payNow()">💳 Pay ₹21 & Register</button>
+<!-- PAYMENT -->
+<a href="https://rzp.io/rzp/2r1AcRdr" target="_blank">
+<button class="pay">💳 Step 1: Pay ₹21</button>
+</a>
 
-<!-- DIGITAL PARTNER (NEW POSITION) -->
-<div style="text-align:center; margin-top:20px; padding:10px;">
+<!-- WHATSAPP -->
+<a href="https://chat.whatsapp.com/F6pAgLGdTcu5soecJMh3F0?mode=gi_t" target="_blank">
+<button class="whatsapp">📲 Step 2: Join WhatsApp</button>
+</a>
 
-    <p style="margin:0; font-weight:bold; color:#555;">Digital Partner</p>
+<!-- DIGITAL PARTNER -->
+<div style="text-align:center;margin-top:20px;">
 
-    <img src="https://github.com/banjaradigitalmp-hue/student-form/blob/main/WhatsApp%20Image%202026-03-06%20at%206.52.34%20PM.jpeg?raw=true" 
-         style="width:60px; height:60px; object-fit:cover; border-radius:50%; box-shadow:0 2px 8px rgba(0,0,0,0.2);">
+<p style="font-weight:bold;color:#555;">Digital Partner</p>
 
-    <h4 style="margin:5px 0;">Banjara Digital</h4>
-    <p style="font-size:12px; color:#666;">Connect • Create • Grow</p>
+<img src="https://github.com/banjaradigitalmp-hue/student-form/blob/main/WhatsApp%20Image%202026-03-06%20at%206.52.34%20PM.jpeg?raw=true"
+style="width:60px;height:60px;border-radius:50%;">
+
+<h4>Banjara Digital</h4>
+<p style="font-size:12px;color:#666;">Connect • Create • Grow</p>
 
 </div>
 
-</form>
+</div>
 
+<!-- ABOUT -->
+<div class="container">
+<h3>About Us</h3>
+<p>
+Banjara Digital एक digital service platform है जो समाज, संस्थाओं और व्यक्तियों को banner design, promotion और digital services प्रदान करता है।
+</p>
+</div>
+
+<!-- CONTACT -->
+<div class="container">
+<h3>Contact</h3>
+<p>📞 9685444391</p>
+<p>📧 banjaradigitalmp@gmail.com</p>
+<p>📍 Madhya Pradesh, India</p>
 </div>
 
 <!-- FOOTER -->
 <div class="footer">
 
-<h3>About</h3>
+<h3>Policies</h3>
+
 <p>
-This program is organized for student guidance and future development.
+<a href="#">Privacy Policy</a> |
+<a href="#">Terms & Conditions</a> |
+<a href="#">Refund Policy</a>
 </p>
 
-<h3>Contact</h3>
-<p>
-📞 9685444391 <br>
-📧 banjaradigitalmp@gmail.com
+<p style="font-size:12px;">
+We respect your privacy. Your data is सुरक्षित रखा जाता है।  
+All payments are final. Refund नहीं मिलेगा।
 </p>
+
+<p>© 2026 Banjara Digital</p>
 
 </div>
-
-<script>
-
-// 🔐 Razorpay Key
-const key = "https://rzp.io/rzp/2r1AcRdr;
-
-// 📊 Google Sheet URL
-const scriptURL = "https://script.google.com/macros/s/AKfycbx3G504bcowfB-xlFziq1IP9bNixPl-SFGy1QLVG4EfI1P3qaOZCbgBIUkSLoZEna9Q6g/exec";
-
-// 📱 WhatsApp Group Link
-const whatsappLink = "https://chat.whatsapp.com/F6pAgLGdTcu5soecJMh3F0?mode=gi_t";
-
-function payNow(){
-
-    var options = {
-        "key": key,
-        "amount": 2100,
-        "currency": "INR",
-        "name": "Student Success Meet",
-        "description": "Registration Fee",
-
-        handler: function (response){
-            submitForm(response.razorpay_payment_id);
-        }
-    };
-
-    var rzp = new Razorpay(options);
-    rzp.open();
-}
-
-function submitForm(paymentId){
-
-    const data = {
-        name: document.getElementById("name").value,
-        dob: document.getElementById("dob").value,
-        mobile: document.getElementById("mobile").value,
-        school: document.getElementById("school").value,
-        stream: document.getElementById("stream").value,
-        college: document.getElementById("college").value,
-        career: document.getElementById("career").value,
-        travel: document.getElementById("travel").value,
-        scholarship: document.getElementById("scholarship").value,
-        health: document.getElementById("health").value,
-        contact1: document.getElementById("contact1").value,
-        contact2: document.getElementById("contact2").value,
-        paymentId: paymentId
-    };
-
-    fetch(scriptURL, {
-        method: "POST",
-        body: JSON.stringify(data)
-    }).then(()=>{
-        alert("🎉 Registration Successful!");
-
-        window.open(whatsappLink, "_blank");
-
-        document.getElementById("myForm").reset();
-    });
-
-}
-
-</script>
 
 </body>
 </html>
