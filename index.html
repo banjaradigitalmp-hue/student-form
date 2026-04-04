@@ -92,14 +92,6 @@ Welcome to Student Success Meet 2026-27.
 Please fill all details carefully.
 </p>
 
-<!-- Digital Partner -->
-<div>
-    <img src="https://github.com/banjaradigitalmp-hue/student-form/blob/main/WhatsApp%20Image%202026-03-06%20at%206.52.34%20PM.jpeg?raw=true">
-    <h3 style="color:#ffd700;">Digital Partner</h3>
-    <h2>Banjara Digital</h2>
-    <p>Connect • Create • Grow</p>
-</div>
-
 <!-- Event Details -->
 <div style="background:#ffffff20; margin:15px; padding:10px; border-radius:8px;">
     <p><b>📅 Date:</b> 10 May 2026</p>
@@ -175,6 +167,18 @@ Please fill all details carefully.
 
 <button type="button" onclick="payNow()">💳 Pay ₹21 & Register</button>
 
+<!-- DIGITAL PARTNER (NEW POSITION) -->
+<div style="text-align:center; margin-top:25px; padding:15px; background:#f1f5ff; border-radius:10px;">
+
+    <p style="margin:0; font-weight:bold; color:#555;">Digital Partner</p>
+
+    <img src="https://github.com/banjaradigitalmp-hue/student-form/blob/main/WhatsApp%20Image%202026-03-06%20at%206.52.34%20PM.jpeg?raw=true">
+
+    <h3 style="margin:5px 0;">Banjara Digital</h3>
+    <p style="font-size:13px; color:#666;">Connect • Create • Grow</p>
+
+</div>
+
 </form>
 
 </div>
@@ -192,11 +196,6 @@ This program is organized for student guidance and future development.
 📞 9685444391 <br>
 📧 banjaradigitalmp@gmail.com
 </p>
-
-<hr>
-
-<p><b>Digital Partner:</b> Banjara Digital</p>
-<p>Connect • Create • Grow</p>
 
 </div>
 
@@ -253,7 +252,6 @@ function submitForm(paymentId){
     }).then(()=>{
         alert("🎉 Registration Successful!");
 
-        // WhatsApp Join
         window.open(whatsappLink, "_blank");
 
         document.getElementById("myForm").reset();
